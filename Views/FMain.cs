@@ -16,5 +16,10 @@ namespace Test_task_Cars.Views
         {
             InitializeComponent();
         }
+
+        private void FMain_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

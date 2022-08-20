@@ -10,15 +10,15 @@ namespace Test_task_Cars.Models
     {
         public Engine AutoEngine { get; set; }
         public int TankVolume { get; set; }
-        public byte MaxCountPassengers { get; set; }
-        public byte CountPassengers { get; set; }
-        public byte MaxСarryingСapacity { get; set; }
-        public byte СarryingСapacity { get; set; }
+        public string NameAuto { get; set; }
+        public int Fuel { get; set; }
 
-        public Auto(Engine autoEngine, int tankVolume)
+        public Auto(Engine autoEngine, int tankVolume, string nameAuto)
         {
             AutoEngine = autoEngine;
             TankVolume = tankVolume;
+            Fuel = new Random().Next(10, TankVolume);
+            NameAuto = nameAuto;
         }
 
         public virtual float GetDistanseByFuelVolume(int FuelVolume)
@@ -31,27 +31,5 @@ namespace Test_task_Cars.Models
             return GetDistanseByFuelVolume(TankVolume);
         }
 
-        public void RemovePassenger()
-        {
-            if (CountPassengers != 0)
-                CountPassengers--;
-        }
-
-        public void AddPassenger()
-        {
-            if (CountPassengers != MaxCountPassengers)
-                CountPassengers++;
-        }
-        public void RemoveCargo(int weight)
-        {
-            if (MaxCountPassengers != 0)
-                MaxCountPassengers--;
-        }
-
-        public void AddCargo(int weight)
-        {
-            if (MaxCountPassengers != MaxCountPassengers)
-                MaxCountPassengers++;
-        }
     }
 }

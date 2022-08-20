@@ -34,5 +34,15 @@ namespace Test_task_Cars.Models
             IsRunning = false;
             return true;
         }
+
+        public override string ToString()
+        {
+            return TypeEngine switch
+            {
+                TypeEngine.Diesel => "Дизельный мотор",
+                TypeEngine.Electric => "Электродвигатель",
+                TypeEngine.Petrol => "Бензиновый мотор"
+            };
+        }
     }
 }

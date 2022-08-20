@@ -10,7 +10,7 @@ namespace Test_task_Cars
     {
         #region Passengers
         public const byte MAX_PASSENGERS_IN_PASSENGER_CAR = 4;
-        public const byte MAX_PASSENGERS_IN_SPORT_CAR = 1;
+        public const byte MAX_PASSENGERS_IN_SPORT_CAR = 0;
         #endregion
 
     }

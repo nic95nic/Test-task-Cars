@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.listBoxCarsList = new System.Windows.Forms.ListBox();
             this.groupBoxPanelControl = new System.Windows.Forms.GroupBox();
             this.labelLine = new System.Windows.Forms.Label();
             this.btnRemoveWeight = new System.Windows.Forms.Button();
@@ -39,33 +38,28 @@
             this.btnRemovePassenger = new System.Windows.Forms.Button();
             this.btnAddPassenger = new System.Windows.Forms.Button();
             this.groupBoxAdditionalInformation = new System.Windows.Forms.GroupBox();
-            this.groupBoxCountPassenger = new System.Windows.Forms.GroupBox();
-            this.groupBoxFuel = new System.Windows.Forms.GroupBox();
-            this.groupBoxKmByFuel = new System.Windows.Forms.GroupBox();
-            this.groupBoxTankAuto = new System.Windows.Forms.GroupBox();
-            this.textBoxPassenger = new System.Windows.Forms.TextBox();
-            this.textBoxFuel = new System.Windows.Forms.TextBox();
-            this.textBoxKmPerFuel = new System.Windows.Forms.TextBox();
-            this.textBoxTankFuel = new System.Windows.Forms.TextBox();
+            this.groupBoxWeight = new System.Windows.Forms.GroupBox();
+            this.textBoxWeight = new System.Windows.Forms.TextBox();
             this.groupBoxEngine = new System.Windows.Forms.GroupBox();
             this.textBoxEngine = new System.Windows.Forms.TextBox();
+            this.groupBoxTankAuto = new System.Windows.Forms.GroupBox();
+            this.textBoxTankFuel = new System.Windows.Forms.TextBox();
+            this.groupBoxKmByFuel = new System.Windows.Forms.GroupBox();
+            this.textBoxKmPerFuel = new System.Windows.Forms.TextBox();
+            this.groupBoxFuel = new System.Windows.Forms.GroupBox();
+            this.textBoxFuel = new System.Windows.Forms.TextBox();
+            this.groupBoxCountPassenger = new System.Windows.Forms.GroupBox();
+            this.textBoxPassenger = new System.Windows.Forms.TextBox();
+            this.listBoxCarsList = new System.Windows.Forms.ListBox();
             this.groupBoxPanelControl.SuspendLayout();
             this.groupBoxAdditionalInformation.SuspendLayout();
-            this.groupBoxCountPassenger.SuspendLayout();
-            this.groupBoxFuel.SuspendLayout();
-            this.groupBoxKmByFuel.SuspendLayout();
-            this.groupBoxTankAuto.SuspendLayout();
+            this.groupBoxWeight.SuspendLayout();
             this.groupBoxEngine.SuspendLayout();
+            this.groupBoxTankAuto.SuspendLayout();
+            this.groupBoxKmByFuel.SuspendLayout();
+            this.groupBoxFuel.SuspendLayout();
+            this.groupBoxCountPassenger.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // listBoxCarsList
-            // 
-            this.listBoxCarsList.FormattingEnabled = true;
-            this.listBoxCarsList.ItemHeight = 15;
-            this.listBoxCarsList.Location = new System.Drawing.Point(12, 12);
-            this.listBoxCarsList.Name = "listBoxCarsList";
-            this.listBoxCarsList.Size = new System.Drawing.Size(252, 244);
-            this.listBoxCarsList.TabIndex = 0;
             // 
             // groupBoxPanelControl
             // 
@@ -101,6 +95,7 @@
             this.btnRemoveWeight.TabIndex = 6;
             this.btnRemoveWeight.Text = "Выгрузить груз(-5кг)";
             this.btnRemoveWeight.UseVisualStyleBackColor = true;
+            this.btnRemoveWeight.Click += new System.EventHandler(this.btnRemoveWeight_Click);
             // 
             // btnAddFuel
             // 
@@ -119,6 +114,7 @@
             this.btnCreateAuto.TabIndex = 4;
             this.btnCreateAuto.Text = "Создать авто";
             this.btnCreateAuto.UseVisualStyleBackColor = true;
+            this.btnCreateAuto.Click += new System.EventHandler(this.btnCreateAuto_Click);
             // 
             // btnAddWeight
             // 
@@ -128,6 +124,7 @@
             this.btnAddWeight.TabIndex = 3;
             this.btnAddWeight.Text = "Добавить груз(+5кг)";
             this.btnAddWeight.UseVisualStyleBackColor = true;
+            this.btnAddWeight.Click += new System.EventHandler(this.btnAddWeight_Click);
             // 
             // btnRemoveFuel
             // 
@@ -146,6 +143,7 @@
             this.btnRemovePassenger.TabIndex = 1;
             this.btnRemovePassenger.Text = "Высадить пассажира";
             this.btnRemovePassenger.UseVisualStyleBackColor = true;
+            this.btnRemovePassenger.Click += new System.EventHandler(this.btnRemovePassenger_Click);
             // 
             // btnAddPassenger
             // 
@@ -155,9 +153,11 @@
             this.btnAddPassenger.TabIndex = 0;
             this.btnAddPassenger.Text = "Посадить пассажира";
             this.btnAddPassenger.UseVisualStyleBackColor = true;
+            this.btnAddPassenger.Click += new System.EventHandler(this.btnAddPassenger_Click);
             // 
             // groupBoxAdditionalInformation
             // 
+            this.groupBoxAdditionalInformation.Controls.Add(this.groupBoxWeight);
             this.groupBoxAdditionalInformation.Controls.Add(this.groupBoxEngine);
             this.groupBoxAdditionalInformation.Controls.Add(this.groupBoxTankAuto);
             this.groupBoxAdditionalInformation.Controls.Add(this.groupBoxKmByFuel);
@@ -166,78 +166,27 @@
             this.groupBoxAdditionalInformation.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.groupBoxAdditionalInformation.Location = new System.Drawing.Point(12, 262);
             this.groupBoxAdditionalInformation.Name = "groupBoxAdditionalInformation";
-            this.groupBoxAdditionalInformation.Size = new System.Drawing.Size(422, 150);
+            this.groupBoxAdditionalInformation.Size = new System.Drawing.Size(422, 139);
             this.groupBoxAdditionalInformation.TabIndex = 2;
             this.groupBoxAdditionalInformation.TabStop = false;
             this.groupBoxAdditionalInformation.Text = "Дополнительная информация:";
             // 
-            // groupBoxCountPassenger
+            // groupBoxWeight
             // 
-            this.groupBoxCountPassenger.Controls.Add(this.textBoxPassenger);
-            this.groupBoxCountPassenger.Location = new System.Drawing.Point(145, 22);
-            this.groupBoxCountPassenger.Name = "groupBoxCountPassenger";
-            this.groupBoxCountPassenger.Size = new System.Drawing.Size(132, 52);
-            this.groupBoxCountPassenger.TabIndex = 3;
-            this.groupBoxCountPassenger.TabStop = false;
-            this.groupBoxCountPassenger.Text = "Пассажиры:";
+            this.groupBoxWeight.Controls.Add(this.textBoxWeight);
+            this.groupBoxWeight.Location = new System.Drawing.Point(283, 80);
+            this.groupBoxWeight.Name = "groupBoxWeight";
+            this.groupBoxWeight.Size = new System.Drawing.Size(132, 52);
+            this.groupBoxWeight.TabIndex = 6;
+            this.groupBoxWeight.TabStop = false;
+            this.groupBoxWeight.Text = "Загруженность(Кг):";
             // 
-            // groupBoxFuel
+            // textBoxWeight
             // 
-            this.groupBoxFuel.Controls.Add(this.textBoxFuel);
-            this.groupBoxFuel.Location = new System.Drawing.Point(283, 22);
-            this.groupBoxFuel.Name = "groupBoxFuel";
-            this.groupBoxFuel.Size = new System.Drawing.Size(132, 52);
-            this.groupBoxFuel.TabIndex = 4;
-            this.groupBoxFuel.TabStop = false;
-            this.groupBoxFuel.Text = "Топливо(л):";
-            // 
-            // groupBoxKmByFuel
-            // 
-            this.groupBoxKmByFuel.Controls.Add(this.textBoxKmPerFuel);
-            this.groupBoxKmByFuel.Location = new System.Drawing.Point(6, 80);
-            this.groupBoxKmByFuel.Name = "groupBoxKmByFuel";
-            this.groupBoxKmByFuel.Size = new System.Drawing.Size(132, 52);
-            this.groupBoxKmByFuel.TabIndex = 4;
-            this.groupBoxKmByFuel.TabStop = false;
-            this.groupBoxKmByFuel.Text = "Запас топлива(км):";
-            // 
-            // groupBoxTankAuto
-            // 
-            this.groupBoxTankAuto.Controls.Add(this.textBoxTankFuel);
-            this.groupBoxTankAuto.Location = new System.Drawing.Point(145, 80);
-            this.groupBoxTankAuto.Name = "groupBoxTankAuto";
-            this.groupBoxTankAuto.Size = new System.Drawing.Size(132, 52);
-            this.groupBoxTankAuto.TabIndex = 5;
-            this.groupBoxTankAuto.TabStop = false;
-            this.groupBoxTankAuto.Text = "Объем бака:";
-            // 
-            // textBoxPassenger
-            // 
-            this.textBoxPassenger.Location = new System.Drawing.Point(6, 19);
-            this.textBoxPassenger.Name = "textBoxPassenger";
-            this.textBoxPassenger.Size = new System.Drawing.Size(120, 23);
-            this.textBoxPassenger.TabIndex = 1;
-            // 
-            // textBoxFuel
-            // 
-            this.textBoxFuel.Location = new System.Drawing.Point(6, 19);
-            this.textBoxFuel.Name = "textBoxFuel";
-            this.textBoxFuel.Size = new System.Drawing.Size(120, 23);
-            this.textBoxFuel.TabIndex = 2;
-            // 
-            // textBoxKmPerFuel
-            // 
-            this.textBoxKmPerFuel.Location = new System.Drawing.Point(6, 22);
-            this.textBoxKmPerFuel.Name = "textBoxKmPerFuel";
-            this.textBoxKmPerFuel.Size = new System.Drawing.Size(120, 23);
-            this.textBoxKmPerFuel.TabIndex = 3;
-            // 
-            // textBoxTankFuel
-            // 
-            this.textBoxTankFuel.Location = new System.Drawing.Point(6, 22);
-            this.textBoxTankFuel.Name = "textBoxTankFuel";
-            this.textBoxTankFuel.Size = new System.Drawing.Size(120, 23);
-            this.textBoxTankFuel.TabIndex = 4;
+            this.textBoxWeight.Location = new System.Drawing.Point(6, 22);
+            this.textBoxWeight.Name = "textBoxWeight";
+            this.textBoxWeight.Size = new System.Drawing.Size(120, 23);
+            this.textBoxWeight.TabIndex = 4;
             // 
             // groupBoxEngine
             // 
@@ -256,38 +205,115 @@
             this.textBoxEngine.Size = new System.Drawing.Size(120, 23);
             this.textBoxEngine.TabIndex = 1;
             // 
+            // groupBoxTankAuto
+            // 
+            this.groupBoxTankAuto.Controls.Add(this.textBoxTankFuel);
+            this.groupBoxTankAuto.Location = new System.Drawing.Point(145, 80);
+            this.groupBoxTankAuto.Name = "groupBoxTankAuto";
+            this.groupBoxTankAuto.Size = new System.Drawing.Size(132, 52);
+            this.groupBoxTankAuto.TabIndex = 5;
+            this.groupBoxTankAuto.TabStop = false;
+            this.groupBoxTankAuto.Text = "Объем бака:";
+            // 
+            // textBoxTankFuel
+            // 
+            this.textBoxTankFuel.Location = new System.Drawing.Point(6, 22);
+            this.textBoxTankFuel.Name = "textBoxTankFuel";
+            this.textBoxTankFuel.Size = new System.Drawing.Size(120, 23);
+            this.textBoxTankFuel.TabIndex = 4;
+            // 
+            // groupBoxKmByFuel
+            // 
+            this.groupBoxKmByFuel.Controls.Add(this.textBoxKmPerFuel);
+            this.groupBoxKmByFuel.Location = new System.Drawing.Point(6, 80);
+            this.groupBoxKmByFuel.Name = "groupBoxKmByFuel";
+            this.groupBoxKmByFuel.Size = new System.Drawing.Size(132, 52);
+            this.groupBoxKmByFuel.TabIndex = 4;
+            this.groupBoxKmByFuel.TabStop = false;
+            this.groupBoxKmByFuel.Text = "Запас хода(км):";
+            // 
+            // textBoxKmPerFuel
+            // 
+            this.textBoxKmPerFuel.Location = new System.Drawing.Point(6, 22);
+            this.textBoxKmPerFuel.Name = "textBoxKmPerFuel";
+            this.textBoxKmPerFuel.Size = new System.Drawing.Size(120, 23);
+            this.textBoxKmPerFuel.TabIndex = 3;
+            // 
+            // groupBoxFuel
+            // 
+            this.groupBoxFuel.Controls.Add(this.textBoxFuel);
+            this.groupBoxFuel.Location = new System.Drawing.Point(283, 22);
+            this.groupBoxFuel.Name = "groupBoxFuel";
+            this.groupBoxFuel.Size = new System.Drawing.Size(132, 52);
+            this.groupBoxFuel.TabIndex = 4;
+            this.groupBoxFuel.TabStop = false;
+            this.groupBoxFuel.Text = "Топливо(л):";
+            // 
+            // textBoxFuel
+            // 
+            this.textBoxFuel.Location = new System.Drawing.Point(6, 19);
+            this.textBoxFuel.Name = "textBoxFuel";
+            this.textBoxFuel.Size = new System.Drawing.Size(120, 23);
+            this.textBoxFuel.TabIndex = 2;
+            // 
+            // groupBoxCountPassenger
+            // 
+            this.groupBoxCountPassenger.Controls.Add(this.textBoxPassenger);
+            this.groupBoxCountPassenger.Location = new System.Drawing.Point(145, 22);
+            this.groupBoxCountPassenger.Name = "groupBoxCountPassenger";
+            this.groupBoxCountPassenger.Size = new System.Drawing.Size(132, 52);
+            this.groupBoxCountPassenger.TabIndex = 3;
+            this.groupBoxCountPassenger.TabStop = false;
+            this.groupBoxCountPassenger.Text = "Пассажиры:";
+            // 
+            // textBoxPassenger
+            // 
+            this.textBoxPassenger.Location = new System.Drawing.Point(6, 19);
+            this.textBoxPassenger.Name = "textBoxPassenger";
+            this.textBoxPassenger.Size = new System.Drawing.Size(120, 23);
+            this.textBoxPassenger.TabIndex = 1;
+            // 
+            // listBoxCarsList
+            // 
+            this.listBoxCarsList.FormattingEnabled = true;
+            this.listBoxCarsList.ItemHeight = 15;
+            this.listBoxCarsList.Location = new System.Drawing.Point(12, 12);
+            this.listBoxCarsList.Name = "listBoxCarsList";
+            this.listBoxCarsList.Size = new System.Drawing.Size(252, 244);
+            this.listBoxCarsList.TabIndex = 0;
+            this.listBoxCarsList.SelectedIndexChanged += new System.EventHandler(this.listBoxCarsList_SelectedIndexChanged);
+            // 
             // FMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(446, 424);
+            this.ClientSize = new System.Drawing.Size(446, 405);
             this.Controls.Add(this.groupBoxAdditionalInformation);
             this.Controls.Add(this.groupBoxPanelControl);
             this.Controls.Add(this.listBoxCarsList);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "FMain";
             this.Text = "Автомобили";
-            this.Load += new System.EventHandler(this.FMain_Load);
             this.groupBoxPanelControl.ResumeLayout(false);
             this.groupBoxPanelControl.PerformLayout();
             this.groupBoxAdditionalInformation.ResumeLayout(false);
-            this.groupBoxCountPassenger.ResumeLayout(false);
-            this.groupBoxCountPassenger.PerformLayout();
-            this.groupBoxFuel.ResumeLayout(false);
-            this.groupBoxFuel.PerformLayout();
-            this.groupBoxKmByFuel.ResumeLayout(false);
-            this.groupBoxKmByFuel.PerformLayout();
-            this.groupBoxTankAuto.ResumeLayout(false);
-            this.groupBoxTankAuto.PerformLayout();
+            this.groupBoxWeight.ResumeLayout(false);
+            this.groupBoxWeight.PerformLayout();
             this.groupBoxEngine.ResumeLayout(false);
             this.groupBoxEngine.PerformLayout();
+            this.groupBoxTankAuto.ResumeLayout(false);
+            this.groupBoxTankAuto.PerformLayout();
+            this.groupBoxKmByFuel.ResumeLayout(false);
+            this.groupBoxKmByFuel.PerformLayout();
+            this.groupBoxFuel.ResumeLayout(false);
+            this.groupBoxFuel.PerformLayout();
+            this.groupBoxCountPassenger.ResumeLayout(false);
+            this.groupBoxCountPassenger.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private ListBox listBoxCarsList;
         private GroupBox groupBoxPanelControl;
         private Button btnAddPassenger;
         private Button btnRemoveWeight;
@@ -308,5 +334,8 @@
         private TextBox textBoxPassenger;
         private GroupBox groupBoxEngine;
         private TextBox textBoxEngine;
+        private ListBox listBoxCarsList;
+        private GroupBox groupBoxWeight;
+        private TextBox textBoxWeight;
     }
 }

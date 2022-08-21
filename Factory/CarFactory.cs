@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 using Test_task_Cars.Enums;
 using Test_task_Cars.Models;
 
@@ -16,7 +12,7 @@ namespace Test_task_Cars.Factory
             switch (typeAuto)
             {
                 case TypeAuto.Cargo:
-                    return new CargoCar(engine, 400, nameAuto, 10000);
+                    return new CargoCar(engine, 400, nameAuto, 5000);
                 case TypeAuto.Passenger:
                     return new PassengerCar(engine, 50, nameAuto);
                 case TypeAuto.Sport:

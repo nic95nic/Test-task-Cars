@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Test_task_Cars.Models
 {
     public abstract class Auto
@@ -13,7 +8,7 @@ namespace Test_task_Cars.Models
         public string NameAuto { get; set; }
         public int Fuel { get; set; }
 
-        public Auto(Engine autoEngine, int tankVolume, string nameAuto)
+        protected Auto(Engine autoEngine, int tankVolume, string nameAuto)
         {
             AutoEngine = autoEngine;
             TankVolume = tankVolume;
@@ -30,6 +25,5 @@ namespace Test_task_Cars.Models
         {
             return GetDistanseByFuelVolume(TankVolume);
         }
-
     }
 }

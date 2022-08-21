@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 using Test_task_Cars.Interfaces;
 
 namespace Test_task_Cars.Models
@@ -30,6 +26,12 @@ namespace Test_task_Cars.Models
             if (weight > CurrentWeight)
                 return;
             CurrentWeight -= weight;
+        }
+
+        public override float GetDistanseByFuelVolume(int FuelVolume)
+        {
+            return base.GetDistanseByFuelVolume(FuelVolume) 
+                   - base.GetDistanseByFuelVolume(FuelVolume) / 100 * (0.04f * CurrentWeight);
         }
     }
 }

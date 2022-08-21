@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Drawing;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Globalization;
 using Test_task_Cars.Interfaces;
 using Test_task_Cars.Models;
 
@@ -16,62 +6,66 @@ namespace Test_task_Cars.Views
 {
     public partial class FMain : Form
     {
-        private Dictionary<Guid, Auto> Cars;
+        private readonly Dictionary<Guid, Auto> _cars;
         public FMain()
         {
             InitializeComponent();
-            Cars = new Dictionary<Guid, Auto>();
+            _cars = new Dictionary<Guid, Auto>();
         }
 
         private void btnCreateAuto_Click(object sender, EventArgs e)
         {
-            using FNewAuto createAuto = new FNewAuto();
-            if (createAuto.ShowDialog() == DialogResult.OK)
-            {
-                Cars.Add(Guid.NewGuid(), createAuto.GetAuto());
-                ReBindingCarsList();
-            }
+            using var createAuto = new FNewAuto();
+            if (createAuto.ShowDialog() != DialogResult.OK) return;
+            _cars.Add(Guid.NewGuid(), createAuto.GetAuto());
+            ReBindingCarsList();
         }
 
         private void ReBindingCarsList()
         {
-            listBoxCarsList.DataSource = Cars.Values.ToList();
+            listBoxCarsList.DataSource = _cars.Values.ToList();
             listBoxCarsList.DisplayMember = "NameAuto";
         }
 
-        private Auto? getSelectedAuto()
+        private Auto? GetSelectedAuto()
         {
             return listBoxCarsList.SelectedItem as Auto;
         }
 
         private void btnAddPassenger_Click(object sender, EventArgs e)
         {
-            if (getSelectedAuto() is IPassengerCarOperation selectedPassangerAuto)
-                selectedPassangerAuto.AddPassenger();
+            if (GetSelectedAuto() is IPassengerCarOperations selectedPassengerAuto)
+                selectedPassengerAuto.AddPassenger();
             UpdateAdditionalInfo();
 
         }
 
         private void btnRemovePassenger_Click(object sender, EventArgs e)
         {
-            if (getSelectedAuto() is IPassengerCarOperation selectedPassangerAuto)
-                selectedPassangerAuto.RemovePassenger();
+            if (GetSelectedAuto() is IPassengerCarOperations selectedPassengerAuto)
+                selectedPassengerAuto.RemovePassenger();
             UpdateAdditionalInfo();
         }
 
         private void UpdateAdditionalInfo()
         {
             ClearAdditionalInfo();
-            Auto? selectedAuto = getSelectedAuto();
-            textBoxEngine.Text = selectedAuto?.AutoEngine.ToString();
-            textBoxFuel.Text = Convert.ToString(selectedAuto?.Fuel);
-            textBoxKmPerFuel.Text = Convert.ToString(selectedAuto.GetDistanseByFuelVolume(selectedAuto.Fuel));
+            var selectedAuto = GetSelectedAuto();
+            if (selectedAuto == null) return;
+            textBoxEngine.Text = selectedAuto.AutoEngine.ToString();
+            textBoxFuelСonsumption.Text = Convert.ToString(selectedAuto.AutoEngine.FuelСonsumptionPerOneHundredKm);
+            textBoxFuel.Text = Convert.ToString(selectedAuto.Fuel);
+            textBoxKmPerFuel.Text = Convert.ToString(selectedAuto.GetDistanseByFuelVolume(selectedAuto.Fuel), CultureInfo.InvariantCulture);
             textBoxTankFuel.Text = Convert.ToString(selectedAuto.TankVolume);
-            if (selectedAuto is IPassengerCarOperation)
-                textBoxPassenger.Text = Convert.ToString(((IPassengerCarOperation)selectedAuto).CurrentPassengerCount);
-            if(selectedAuto is ICargoCarOperations)
-                textBoxWeight.Text = Convert.ToString(((ICargoCarOperations)selectedAuto).CurrentWeight);
-
+            switch (selectedAuto)
+            {
+                case IPassengerCarOperations passengerOperations:
+                    textBoxPassenger.Text = Convert.ToString(passengerOperations.CurrentPassengerCount);
+                    break;
+                case ICargoCarOperations cargoOperations:
+                    textBoxWeight.Text = Convert.ToString(cargoOperations.CurrentWeight, CultureInfo.InvariantCulture);
+                    break;
+            }
         }
 
         private void ClearAdditionalInfo()
@@ -82,23 +76,21 @@ namespace Test_task_Cars.Views
             textBoxTankFuel.Text = string.Empty;
             textBoxPassenger.Text = string.Empty;
             textBoxWeight.Text= string.Empty;
+            textBoxFuelСonsumption.Text = string.Empty;
         }
 
-        private void listBoxCarsList_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            UpdateAdditionalInfo();
-        }
+        private void listBoxCarsList_SelectedIndexChanged(object sender, EventArgs e) => UpdateAdditionalInfo();
 
         private void btnAddWeight_Click(object sender, EventArgs e)
         {
-            if (getSelectedAuto() is ICargoCarOperations selectedCargoAuto)
+            if (GetSelectedAuto() is ICargoCarOperations selectedCargoAuto)
                 selectedCargoAuto.AddWeight(50);
             UpdateAdditionalInfo();
         }
 
         private void btnRemoveWeight_Click(object sender, EventArgs e)
         {
-            if (getSelectedAuto() is ICargoCarOperations selectedCargoAuto)
+            if (GetSelectedAuto() is ICargoCarOperations selectedCargoAuto)
                 selectedCargoAuto.RemoveWeight(50);
             UpdateAdditionalInfo();
         }

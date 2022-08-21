@@ -51,6 +51,8 @@
             this.groupBoxCountPassenger = new System.Windows.Forms.GroupBox();
             this.textBoxPassenger = new System.Windows.Forms.TextBox();
             this.listBoxCarsList = new System.Windows.Forms.ListBox();
+            this.groupBoxFuelСonsumption = new System.Windows.Forms.GroupBox();
+            this.textBoxFuelСonsumption = new System.Windows.Forms.TextBox();
             this.groupBoxPanelControl.SuspendLayout();
             this.groupBoxAdditionalInformation.SuspendLayout();
             this.groupBoxWeight.SuspendLayout();
@@ -59,6 +61,7 @@
             this.groupBoxKmByFuel.SuspendLayout();
             this.groupBoxFuel.SuspendLayout();
             this.groupBoxCountPassenger.SuspendLayout();
+            this.groupBoxFuelСonsumption.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBoxPanelControl
@@ -157,6 +160,7 @@
             // 
             // groupBoxAdditionalInformation
             // 
+            this.groupBoxAdditionalInformation.Controls.Add(this.groupBoxFuelСonsumption);
             this.groupBoxAdditionalInformation.Controls.Add(this.groupBoxWeight);
             this.groupBoxAdditionalInformation.Controls.Add(this.groupBoxEngine);
             this.groupBoxAdditionalInformation.Controls.Add(this.groupBoxTankAuto);
@@ -166,7 +170,7 @@
             this.groupBoxAdditionalInformation.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.groupBoxAdditionalInformation.Location = new System.Drawing.Point(12, 262);
             this.groupBoxAdditionalInformation.Name = "groupBoxAdditionalInformation";
-            this.groupBoxAdditionalInformation.Size = new System.Drawing.Size(422, 139);
+            this.groupBoxAdditionalInformation.Size = new System.Drawing.Size(422, 195);
             this.groupBoxAdditionalInformation.TabIndex = 2;
             this.groupBoxAdditionalInformation.TabStop = false;
             this.groupBoxAdditionalInformation.Text = "Дополнительная информация:";
@@ -283,11 +287,28 @@
             this.listBoxCarsList.TabIndex = 0;
             this.listBoxCarsList.SelectedIndexChanged += new System.EventHandler(this.listBoxCarsList_SelectedIndexChanged);
             // 
+            // groupBoxFuelСonsumption
+            // 
+            this.groupBoxFuelСonsumption.Controls.Add(this.textBoxFuelСonsumption);
+            this.groupBoxFuelСonsumption.Location = new System.Drawing.Point(7, 138);
+            this.groupBoxFuelСonsumption.Name = "groupBoxFuelСonsumption";
+            this.groupBoxFuelСonsumption.Size = new System.Drawing.Size(132, 52);
+            this.groupBoxFuelСonsumption.TabIndex = 5;
+            this.groupBoxFuelСonsumption.TabStop = false;
+            this.groupBoxFuelСonsumption.Text = "Расход(Л/100км):";
+            // 
+            // textBoxFuelСonsumption
+            // 
+            this.textBoxFuelСonsumption.Location = new System.Drawing.Point(6, 19);
+            this.textBoxFuelСonsumption.Name = "textBoxFuelСonsumption";
+            this.textBoxFuelСonsumption.Size = new System.Drawing.Size(120, 23);
+            this.textBoxFuelСonsumption.TabIndex = 1;
+            // 
             // FMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(446, 405);
+            this.ClientSize = new System.Drawing.Size(446, 459);
             this.Controls.Add(this.groupBoxAdditionalInformation);
             this.Controls.Add(this.groupBoxPanelControl);
             this.Controls.Add(this.listBoxCarsList);
@@ -309,6 +330,8 @@
             this.groupBoxFuel.PerformLayout();
             this.groupBoxCountPassenger.ResumeLayout(false);
             this.groupBoxCountPassenger.PerformLayout();
+            this.groupBoxFuelСonsumption.ResumeLayout(false);
+            this.groupBoxFuelСonsumption.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -337,5 +360,7 @@
         private ListBox listBoxCarsList;
         private GroupBox groupBoxWeight;
         private TextBox textBoxWeight;
+        private GroupBox groupBoxFuelСonsumption;
+        private TextBox textBoxFuelСonsumption;
     }
 }

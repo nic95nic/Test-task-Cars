@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 using Test_task_Cars.Interfaces;
 
 namespace Test_task_Cars.Models
 {
-    internal class SportCar : Auto, IPassengerCarOperation
+    internal class SportCar : Auto, IPassengerCarOperations
     {
         public byte MaxPassengerCount { get; set; }
         public byte CurrentPassengerCount { get; set; }
@@ -19,16 +14,13 @@ namespace Test_task_Cars.Models
             MaxPassengerCount = DefaultValues.MAX_PASSENGERS_IN_SPORT_CAR;
             CurrentPassengerCount = 0;
         }
-
-
+        
         public void AddPassenger()
         {
-            throw new NotImplementedException();
         }
 
         public void RemovePassenger()
         {
-            throw new NotImplementedException();
         }
     }
 }

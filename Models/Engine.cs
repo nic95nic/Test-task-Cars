@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 using Test_task_Cars.Enums;
 
 namespace Test_task_Cars.Models
@@ -21,6 +17,8 @@ namespace Test_task_Cars.Models
             FuelСonsumptionPerOneKm = fuelСonsumptionPerOneHundredKm / 100;
         }
 
+        
+        // TODO Сделать уменьшение топлива при запущеном двигателе
         public virtual bool TryStart()
         {
             if (IsRunning) return false;
@@ -41,7 +39,8 @@ namespace Test_task_Cars.Models
             {
                 TypeEngine.Diesel => "Дизельный мотор",
                 TypeEngine.Electric => "Электродвигатель",
-                TypeEngine.Petrol => "Бензиновый мотор"
+                TypeEngine.Petrol => "Бензиновый мотор",
+                _ => throw new ArgumentOutOfRangeException()
             };
         }
     }

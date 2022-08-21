@@ -31,7 +31,7 @@ namespace Test_task_Cars.Models
         public override float GetDistanseByFuelVolume(int FuelVolume)
         {
             return base.GetDistanseByFuelVolume(FuelVolume) 
-                   - base.GetDistanseByFuelVolume(FuelVolume) / 100 * (0.04f * CurrentWeight);
+                   - base.GetDistanseByFuelVolume(FuelVolume) / 100 * (0.02f * CurrentWeight);
         }
     }
 }
